@@ -1,0 +1,271 @@
+body {
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(135deg, #eef2f7, #d9e1ec);
+}
+
+/*top section*/
+.title {
+  background: linear-gradient(135deg, #eef2f7, #d9e1ec);
+  border-bottom: 20px solid rgb(17, 17, 66);
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 180px;
+  font-size: 24px;
+  color: black;
+}
+
+.title h1 {
+  font-family: "Dancing Script", cursive;
+  font-weight: 800;
+  font-size: 50px;
+  padding: 20px 60px;
+  
+}
+
+
+
+.additional-features button {
+  border: none;
+  background: none;
+  font-size: 50px;
+}
+
+
+.food-controls {
+  align-items: center;
+box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
+  border-bottom: 1px solid darkgray;
+  padding: 20px;
+}
+
+/* SEARCHING */
+.search button {
+  font-size: 30px;
+  background: none;
+  outline: none;
+  border: none;
+}
+
+.search input {
+  width: 400px;
+  
+  font-size: 14px;
+  padding: 10px;
+  border-radius: 25px;
+  
+  border: none;
+  outline: none;
+  background: transparent;
+}
+
+.search {
+  display: flex;
+  justify-content: center;
+  
+
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+  transition: 0.4s ease;
+
+  border-radius: 25px;
+}
+
+.random{
+  margin-right: 90px;
+}
+/*CATEGORIES */
+.categories {
+  display: flex;
+  justify-content: center;
+  gap: 100px;
+  background: linear-gradient(135deg, #eef2f7, #d9e1ec);
+}
+.categories button {
+  font-size: 30px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 630;
+  letter-spacing: 2px; /* Space between letters */
+  text-transform: uppercase;
+  border: none;
+  background: none;
+}
+
+/*GRID*/
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 3 equal columns */
+  gap: 25px;
+  padding: 40px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/*CARD*/
+.card{
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.card{
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.card:hover{
+  transform: translateY(-8px);
+  box-shadow: 0 12px 20px rgba(0,0,0,0.15);
+}
+
+
+.card:hover img{
+  transform: scale(1.08);
+}
+.card-img{
+  width: 100%;
+  height: 250px;
+  overflow: hidden;
+}
+
+.card-img img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.card h4{
+  padding: 12px;
+  font-size: 20px;
+  text-align: center;
+}
+
+
+.card button:hover {
+  background: #444;
+}
+
+.card{
+  animation: cardAppear 0.4s ease;
+}
+
+@keyframes cardAppear{
+  from{
+    transform: translateY(20px);
+    opacity:0;
+  }
+  to{
+    transform: translateY(0);
+    opacity:1;
+  }
+}
+/* MODAL */
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+
+.modal-content {
+  background: white;
+  padding: 40px;
+  width: 50%;
+  max-height: 90vh;
+  overflow-y: auto;
+  border-radius: 10px;
+}
+
+.modal-content img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.modal-content button {
+  margin-top: 15px;
+  padding: 8px 12px;
+  border: none;
+  background: #222;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.nutrient-row{
+   display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+  padding: 6px 8px;
+}
+
+.recipe-meta {
+ display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin: 15px 0;
+  font-size: 16px;
+  color: #555;
+  
+}
+
+.modal-body section{
+  margin-bottom: 50px;
+}
+
+button{
+  transition: transform 0.15s ease, background 0.2s ease;
+}
+
+button:hover{
+  transform: scale(1.05);
+}
+
+.modal{
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn{
+  from{
+    opacity:0;
+  }
+  to{
+    opacity:1;
+  }
+}
+
+.modal-content{
+  animation: slideUp 0.35s ease;
+}
+
+@keyframes slideUp{
+  from{
+    transform: translateY(40px);
+    opacity:0;
+  }
+  to{
+    transform: translateY(0);
+    opacity:1;
+  }
+}
+/* 📱 Responsive */
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
