@@ -1,0 +1,965 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>RECITRIENTS</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&display=swap" rel="stylesheet">
+<style>
+    body {
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(135deg, #eef2f7, #d9e1ec);
+}
+
+/*top section*/
+.title {
+  background: linear-gradient(135deg, #eef2f7, #d9e1ec);
+  border-bottom: 20px solid rgb(17, 17, 66);
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 250px;
+  font-size: 24px;
+  color: black;
+}
+
+.title h1 {
+  font-family: "Dancing Script", cursive;
+  font-weight: 800;
+  font-size: 50px;
+  padding: 20px 60px;
+  
+}
+
+
+
+.additional-features button {
+  border: none;
+  background: none;
+  font-size: 50px;
+}
+
+
+.food-controls {
+  align-items: center;
+box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
+  border-bottom: 1px solid darkgray;
+  padding: 20px;
+}
+
+/* SEARCHING */
+.search button {
+  font-size: 30px;
+  background: none;
+  outline: none;
+  border: none;
+}
+
+.search input {
+  width: 400px;
+  
+  font-size: 14px;
+  padding: 10px;
+  border-radius: 25px;
+  
+  border: none;
+  outline: none;
+  background: transparent;
+}
+
+.search {
+  display: flex;
+  justify-content: center;
+  
+
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+  transition: 0.4s ease;
+
+  border-radius: 25px;
+}
+
+.randomizer{
+  margin-right: 90px;
+}
+/*CATEGORIES */
+.categories {
+  display: flex;
+  justify-content: center;
+  gap: 100px;
+  background: linear-gradient(135deg, #eef2f7, #d9e1ec);
+}
+.categories button {
+  font-size: 30px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 630;
+  letter-spacing: 2px; /* Space between letters */
+  text-transform: uppercase;
+  border: none;
+  background: none;
+}
+
+/*GRID*/
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 equal columns */
+  gap: 25px;
+  padding: 40px;
+  width: 2000px;
+  box-sizing: border-box;
+  margin-left: 190px;
+}
+
+/*CARD*/
+.card{
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+    background: linear-gradient(180deg, white, #f9fbff);
+     transition: transform 0.25s ease, box-shadow 0.25s ease;
+animation: cardAppear 0.4s ease;
+}
+
+
+.card:hover{
+  transform: translateY(-8px);
+  box-shadow:0 20px 40px rgba(0,0,0,0.2);
+}
+
+
+.card:hover img{
+  transform: scale(1.08);
+}
+.card-img{
+  width: 100%;
+  height: 250px;
+  overflow: hidden;
+}
+
+.card-img img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease;
+  will-change: transform;
+  cursor:pointer;
+}
+
+.card h4{
+  padding: 12px;
+  font-size: 20px;
+  text-align: center;
+}
+
+
+.card button:hover {
+  background: #444;
+}
+
+
+@keyframes cardAppear{
+  from{
+    transform: translateY(20px);
+    opacity:0;
+  }
+  to{
+    transform: translateY(0);
+    opacity:1;
+  }
+}
+/* MODAL */
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+
+.modal-content {
+  scrollbar-width: thin;
+  background: white;
+  padding: 40px;
+  width: 50%;
+  max-height: 90vh;
+  overflow-y: auto;
+  border-radius: 10px;
+   box-shadow:0 30px 60px rgba(0,0,0,0.25);
+}
+
+.modal-content img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.modal-content button {
+  margin-top: 15px;
+  padding: 8px 12px;
+  border: none;
+  background: #222;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.nutrient-row{
+   display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+  padding: 6px 8px;
+  font-size:14px;
+}
+
+.nutrient-row span:last-child{
+font-weight:600;
+}
+
+.recipe-meta {
+ display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin: 15px 0;
+  font-size: 16px;
+  color: #555;
+  
+}
+
+.modal-body section{
+  margin-bottom: 50px;
+}
+
+.modal-content{
+width:900px;
+max-height:90vh;
+overflow-y:auto;
+padding:0;
+border-radius:10px;
+}
+
+/* HERO IMAGE */
+
+.recipe-hero{
+height:250px;
+background-size:cover;
+background-position:center;
+position:relative;
+}
+
+.hero-overlay{
+position:absolute;
+bottom:0;
+left:0;
+width:100%;
+padding:20px;
+background:linear-gradient(to top,rgba(0,0,0,0.7),transparent);
+color:white;
+}
+
+.hero-overlay h1{
+margin:5px 0;
+font-size:28px;
+}
+
+.cuisine{
+font-size:12px;
+opacity:0.8;
+}
+
+/* TOP SECTION */
+
+.recipe-top{
+display:grid;
+grid-template-columns:2fr 1fr;
+gap:30px;
+padding:25px;
+background:#f5f1ea;
+}
+
+/* INGREDIENTS */
+
+.ingredients ul{
+list-style:none;
+padding:0;
+columns:2;
+}
+
+.ingredients li{
+padding:8px 0;
+border-bottom:1px dashed #ccc;
+}
+
+/* NUTRITION */
+
+.nutrition{
+background:white;
+padding:25px;
+border-radius:12px;
+box-shadow:0 10px 25px rgba(0,0,0,0.08);
+border:1px solid #eee;
+font-size:14px;
+}
+
+.nutrition h3{
+font-size:18px;
+margin-bottom:15px;
+border-bottom:2px solid #333;
+padding-bottom:6px;
+}
+
+.nutrition li{
+display:flex;
+justify-content:space-between;
+padding:8px 0;
+border-bottom:1px solid #f0f0f0;
+}
+
+.nutrition li span:first-child{
+color:#555;
+}
+
+.nutrition li span:last-child{
+font-weight:700;
+color:#222;
+}
+
+
+
+/* INSTRUCTIONS */
+
+.instructions{
+padding:25px;
+}
+
+.instructions ol{
+padding-left:20px;
+}
+
+.instructions li{
+margin-bottom:12px;
+line-height:1.5;
+}
+
+/* CLOSE BUTTON */
+
+.close-btn{
+margin:20px;
+padding:10px 20px;
+background:#ff6b6b;
+border:none;
+color:white;
+border-radius:6px;
+cursor:pointer;
+}
+
+.close-btn:hover{
+background:#ff4b4b;
+}
+
+button{
+  transition: transform 0.15s ease, background 0.2s ease;
+}
+
+button:hover{
+  transform: scale(1.05);
+}
+
+.modal{
+  animation: fadeIn 0.3s ease;
+}
+
+
+
+@keyframes fadeIn{
+  from{
+    opacity:0;
+  }
+  to{
+    opacity:1;
+  }
+}
+
+.modal-content{
+  animation: slideUp 0.35s ease;
+}
+
+@keyframes slideUp{
+  from{
+    transform: translateY(40px);
+    opacity:0;
+  }
+  to{
+    transform: translateY(0);
+    opacity:1;
+  }
+}
+/* 📱 Responsive */
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+<nav class="title">
+<h1>RECITRIENTS</h1>
+
+<div class="search">
+<input id="searchInput" placeholder="Search food">
+<button class="icon" onclick="searchFood()">🔍</button>
+</div>
+
+<div class="additional-features">
+<button class="randomizer" onclick="getRandomRecipe()">🎲</button>
+</div>
+
+</nav>
+</header>
+
+<section class="food-controls">
+
+<div class="categories">
+<button onclick="loadCategory('Breakfast')">Breakfast</button>
+<button onclick="loadCategory('Lunch')">Lunch</button>
+<button onclick="loadCategory('Dinner')">Dinner</button>
+<button onclick="loadCategory('Snack')">Snack</button>
+<button onclick="loadCategory('Dessert')">Dessert</button>
+</div>
+
+</section>
+
+<section class="grid" id="results"></section>
+
+<div class="modal" id="modal">
+<div class="modal-content" id="modalContent"></div>
+</div>
+
+<script>
+
+// APIs
+
+const MEALDB="https://www.themealdb.com/api/json/v1/1";
+const USDA_KEY="XOcvdVGfJ3CWGFuKe5Uy46Rjl1YlAeGWkOkQa7YB";
+
+// Nutrition cache
+
+const nutritionCache={};
+
+// DOM
+
+const results=document.getElementById("results");
+const modal=document.getElementById("modal");
+const modalContent=document.getElementById("modalContent");
+const searchInput=document.getElementById("searchInput");
+
+// Load default recipes
+
+window.addEventListener("DOMContentLoaded",()=>{
+results.innerHTML="<p>Loading recipes...</p>";
+loadDefaultRandomCards();
+});
+
+async function loadDefaultRandomCards(){
+
+try{
+
+const promises=Array.from(
+{length:9},
+()=>fetch(`${MEALDB}/random.php`).then(r=>r.json())
+);
+
+const resultsData=await Promise.all(promises);
+const recipes=resultsData.map(d=>d.meals[0]);
+
+displayRecipes(recipes);
+
+}catch(error){
+
+results.innerHTML="<p>⚠ Failed to load recipes</p>";
+
+}
+
+}
+
+// Category mapping
+
+const categoryMap={
+Breakfast:"Breakfast",
+Lunch:"Beef",
+Dinner:"Chicken",
+Snack:"Side",
+Dessert:"Dessert"
+};
+
+function loadCategory(category){
+fetchRecipesByCategory(category);
+}
+
+async function fetchRecipesByCategory(category){
+
+results.innerHTML="<p>Loading...</p>";
+
+const mealdbCategory=categoryMap[category]||"Miscellaneous";
+
+const res=await fetch(`${MEALDB}/filter.php?c=${mealdbCategory}`);
+const data=await res.json();
+
+if(!data.meals){
+results.innerHTML="<p>No recipes found.</p>";
+return;
+}
+
+const shuffled=[...data.meals].sort(()=>Math.random()-0.5);
+const selected=shuffled.slice(0,9);
+
+displayRecipes(selected);
+
+}
+
+// Search
+
+function searchFood(){
+
+const query=searchInput.value.trim();
+if(!query)return;
+
+fetchRecipesByQuery(query);
+
+}
+
+async function fetchRecipesByQuery(query){
+
+results.innerHTML="<p>Searching...</p>";
+
+const res=await fetch(`${MEALDB}/search.php?s=${query}`);
+const data=await res.json();
+
+displayRecipes(data.meals||[]);
+
+}
+
+let searchTimeout;
+
+searchInput.addEventListener("input",()=>{
+
+clearTimeout(searchTimeout);
+
+searchTimeout=setTimeout(()=>{
+searchFood();
+},400);
+
+});
+
+searchInput.addEventListener("keypress",function(e){
+
+if(e.key==="Enter"){
+searchFood();
+}
+
+});
+
+// Display recipes
+
+function displayRecipes(recipes){
+
+if(!recipes||recipes.length===0){
+
+results.innerHTML="<p>No recipes found.</p>";
+return;
+
+}
+
+const html=recipes.map(recipe=>`
+
+<div class="card">
+
+<div class="card-img">
+
+<img
+src="${recipe.strMealThumb}"
+alt="${recipe.strMeal}"
+onclick="viewRecipe(${recipe.idMeal})"
+loading="lazy"
+>
+
+</div>
+
+<h4>${recipe.strMeal}</h4>
+
+</div>
+
+`).join("");
+
+results.innerHTML=html;
+
+}
+
+// Random recipe
+
+async function getRandomRecipe(){
+
+const res=await fetch(`${MEALDB}/random.php`);
+const data=await res.json();
+
+viewRecipe(data.meals[0].idMeal);
+
+}
+
+// View recipe
+
+async function viewRecipe(id){
+
+const res=await fetch(`${MEALDB}/lookup.php?i=${id}`);
+const data=await res.json();
+
+const meal=data.meals[0];
+
+let ingredientsHTML="";
+let ingredientList=[];
+
+for(let i=1;i<=20;i++){
+
+const ingredient=meal[`strIngredient${i}`];
+const measure=meal[`strMeasure${i}`];
+
+if(ingredient&&ingredient.trim()!==""){
+
+ingredientsHTML+=`<li>${measure} ${ingredient}</li>`;
+
+ingredientList.push({
+name:ingredient,
+measure:measure
+});
+
+}
+
+}
+
+modalContent.innerHTML=`
+
+<div class="recipe-modal">
+
+<div class="recipe-hero" style="background-image:url('${meal.strMealThumb}')">
+<div class="hero-overlay">
+<p class="cuisine">${meal.strArea} • ${meal.strCategory}</p>
+<h1>${meal.strMeal}</h1>
+</div>
+</div>
+
+<div class="recipe-top">
+
+<div class="ingredients">
+<h3>Ingredients</h3>
+<ul>${ingredientsHTML}</ul>
+</div>
+
+<div class="nutrition">
+<h3>Nutrition Facts</h3>
+<ul id="nutrition-list">
+<li>Loading nutrition...</li>
+</ul>
+</div>
+
+</div>
+
+<div class="instructions">
+
+<h3>Instructions</h3>
+
+<ol>
+${meal.strInstructions
+  .replace(/STEP\s*\d+/gi, "")      // remove STEP 1, STEP 2 etc
+  .replace(/\d+\./g, "")            // remove 1. 2. 3.
+  .split(/\r?\n/)
+  .map(s => s.trim())
+  .filter(s => s.length > 0)
+  .map(step => `<li>${step}</li>`)
+  .join("")}
+</ol>
+
+</div>
+
+<button class="close-btn" onclick="closeModal()">Close</button>
+
+</div>
+`;
+
+modal.style.display="flex";
+
+const nutrition=await fetchNutritionLabel(ingredientList);
+
+document.getElementById("nutrition-list").innerHTML=`
+
+<li class="nutrient-row"><span>Calories</span><span>${nutrition.Calories.toFixed(1)} kcal</span></li>
+<li class="nutrient-row"><span>Protein</span><span>${nutrition.Protein.toFixed(1)} g</span></li>
+<li class="nutrient-row"><span>Carbs</span><span>${nutrition.Carbs.toFixed(1)} g</span></li>
+<li class="nutrient-row"><span>Fat</span><span>${nutrition.Fat.toFixed(1)} g</span></li>
+<li class="nutrient-row"><span>Sugar</span><span>${nutrition.Sugar.toFixed(1)} g</span></li>
+<li class="nutrient-row"><span>Sodium</span><span>${nutrition.Sodium.toFixed(1)} mg</span></li>
+<li class="nutrient-row"><span>Fiber</span><span>${nutrition.Fiber.toFixed(1)} g</span></li>
+
+`;
+
+}
+
+// NEW: Ingredient normalization
+
+function normalizeIngredient(name){
+
+name=name.toLowerCase().trim();
+
+const aliases={
+"red onion":"onion",
+"green onion":"onion",
+"spring onion":"onion",
+"brown sugar":"sugar",
+"caster sugar":"sugar",
+"powdered sugar":"sugar",
+"olive oil":"oil",
+"vegetable oil":"oil",
+"chicken breast":"chicken",
+"garlic clove":"garlic"
+};
+
+for(const key in aliases){
+if(name.includes(key)){
+return aliases[key];
+}
+}
+
+return name;
+
+}
+
+// NEW: Smart food matching
+
+function findBestFoodMatch(foods,ingredient){
+
+let bestFood=null;
+let bestScore=0;
+
+foods.forEach(food=>{
+
+const desc=food.description.toLowerCase();
+let score=0;
+
+if(desc.includes(ingredient)) score+=5;
+
+ingredient.split(" ").forEach(word=>{
+if(desc.includes(word)) score+=1;
+});
+
+if(score>bestScore){
+bestScore=score;
+bestFood=food;
+}
+
+});
+
+return bestFood || foods[0];
+
+}
+
+// IMPROVED measure parser
+
+function parseMeasure(measure){
+
+measure=measure.toLowerCase().trim();
+
+let amount=1;
+let unit="g";
+
+const fractionMatch=measure.match(/(\d+)\s*\/\s*(\d+)/);
+
+if(fractionMatch){
+amount=parseFloat(fractionMatch[1])/parseFloat(fractionMatch[2]);
+}
+
+else{
+
+const numberMatch=measure.match(/\d+(\.\d+)?/);
+
+if(numberMatch){
+amount=parseFloat(numberMatch[0]);
+}
+
+}
+
+const unitMatch=measure.match(/[a-zA-Z]+/);
+
+if(unitMatch){
+unit=unitMatch[0];
+}
+
+return{amount,unit};
+
+}
+
+// IMPROVED unit conversion
+
+function convertToGrams(amount,unit,ingredient){
+
+unit=unit.toLowerCase();
+
+const baseConversions={
+g:1,
+gram:1,
+kg:1000,
+mg:0.001,
+ml:1,
+tsp:5,
+teaspoon:5,
+tbsp:15,
+tablespoon:15,
+oz:28,
+lb:454,
+clove:5,
+slice:30,
+piece:50
+};
+
+const densityTable={
+flour:120,
+sugar:200,
+butter:227,
+rice:185,
+milk:240,
+oil:218
+};
+
+if(unit==="cup"){
+
+if(densityTable[ingredient]){
+return amount*densityTable[ingredient];
+}
+
+return amount*240;
+
+}
+
+if(baseConversions[unit]){
+return amount*baseConversions[unit];
+}
+
+return 100;
+
+}
+
+// IMPROVED nutrition calculation
+
+async function fetchNutritionLabel(ingredients){
+
+const totals={
+Calories:0,
+Protein:0,
+Carbs:0,
+Fat:0,
+Sugar:0,
+Sodium:0,
+Fiber:0
+};
+
+const requests=ingredients.map(async item=>{
+
+try{
+
+let ingredientName=normalizeIngredient(item.name);
+
+let nutrients;
+
+if(nutritionCache[ingredientName]){
+
+nutrients=nutritionCache[ingredientName];
+
+}else{
+
+const res=await fetch(
+`https://api.nal.usda.gov/fdc/v1/foods/search?query=${encodeURIComponent(ingredientName)}&api_key=${USDA_KEY}`
+);
+
+const data=await res.json();
+
+if(!data.foods||data.foods.length===0)return;
+
+const best=findBestFoodMatch(data.foods,ingredientName);
+
+nutrients=best.foodNutrients;
+
+nutritionCache[ingredientName]=nutrients;
+
+}
+
+const parsed=parseMeasure(item.measure||"1 g");
+const grams=convertToGrams(parsed.amount,parsed.unit,ingredientName);
+
+const factor=grams/100;
+
+nutrients.forEach(n=>{
+
+const value=(n.value||0)*factor;
+const name=n.nutrientName.toLowerCase();
+
+if(name.includes("energy"))totals.Calories+=value;
+if(name.includes("protein"))totals.Protein+=value;
+if(name.includes("carbohydrate"))totals.Carbs+=value;
+if(name.includes("fat"))totals.Fat+=value;
+if(name.includes("sugar"))totals.Sugar+=value;
+if(name.includes("sodium"))totals.Sodium+=value;
+if(name.includes("fiber"))totals.Fiber+=value;
+
+});
+
+}catch(e){
+
+console.warn("Nutrition failed for",item.name);
+
+}
+
+});
+
+await Promise.all(requests);
+
+return totals;
+
+}
+
+// Close modal
+
+function closeModal(){
+modal.style.display="none";
+}
+
+window.onclick=function(event){
+if(event.target===modal){
+closeModal();
+}
+}
+
+</script>
+
+</body>
+</html>
+```
